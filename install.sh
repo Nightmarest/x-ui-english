@@ -119,7 +119,7 @@ download_xui(){
             exit 1
         fi
         yellow "The latest version of X-UI is detected: $ {last_version}, starting installation..."
-        wget -N --no-check-certificate -O /usr/local/x-ui-linux-$(archAffix).tar.gz https://github.com/Nightmarest/x-ui-english/releases/download/${last_version}/x-ui-linux-$(archAffix).tar.gz
+        wget -N --no-check-certificate -O /usr/local/x-ui-linux-$(archAffix).tar https://github.com/Nightmarest/x-ui-english/releases/download/${last_version}/x-ui-linux-$(archAffix).tar
         if [[ $? -ne 0 ]]; then
             red "Download the X-UI failure, please make sure your server can connect and download files from github"
             rm -f install.sh
@@ -127,9 +127,9 @@ download_xui(){
         fi
     else
         last_version=$1
-        url="https://github.com/Nightmarest/x-ui-english/releases/download/${last_version}/x-ui-linux-$(archAffix).tar.gz"
+        url="https://github.com/Nightmarest/x-ui-english/releases/download/${last_version}/x-ui-linux-$(archAffix).tar"
         yellow "Starting installation x-ui $1"
-        wget -N --no-check-certificate -O /usr/local/x-ui-linux-$(archAffix).tar.gz ${url}
+        wget -N --no-check-certificate -O /usr/local/x-ui-linux-$(archAffix).tar ${url}
         if [[ $? -ne 0 ]]; then
             red "Download X-UI V $ 1 Failure, please make sure this version exists"
             rm -f install.sh
@@ -138,8 +138,8 @@ download_xui(){
     fi
     
     cd /usr/local/
-    tar zxvf x-ui-linux-$(archAffix).tar.gz
-    rm -f x-ui-linux-$(archAffix).tar.gz
+    tar zxvf x-ui-linux-$(archAffix).tar
+    rm -f x-ui-linux-$(archAffix).tar.
     
     cd x-ui
     chmod +x x-ui bin/xray-linux-$(archAffix)
